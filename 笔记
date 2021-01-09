@@ -1,0 +1,24 @@
+1:实现线程有几种方式
+这歌问题在面试也经常被问到,网上也有很多答案,有的说1种,2种,4种的都有,那么到底是几种呢?其实我们只要打开Thread类源码 看看它的注释就能找到答案
+//在这就可以看到有说是二种方式创建线程 一种是继承Thread 实现run方法  第二种是实现Runnable接口的方式
+There are two ways to create a new thread of execution.
+One is to
+ * declare a class to be a subclass of <code>Thread</code>. This
+ * subclass should override the <code>run</code> method of class
+ * <code>Thread</code>. An instance of the subclass can then be
+ * allocated and started. For example, a thread that computes primes
+ * larger than a stated value could be written as follows:
+
+  The other way to create a thread is to declare a class that
+  * implements the <code>Runnable</code> interface. That class then
+  * implements the <code>run</code> method. An instance of the class can
+  * then be allocated, passed as an argument when creating
+  * <code>Thread</code>, and started. The same example in this other
+  * style looks like the following:
+
+  那么相比实现Runnable和继承Thread创建线程哪一个更好呢?
+  1:如果继承Thread类,那么就不能继承其他的类,因为java是单继承,因此限制了它的扩展性
+  2:如果继承Thread类,那么每次创建线程都要new一个Thread,导致线程的开启和销毁会开销比较大,因为开启线程其实是操作系统层面的,而且继承Thread类,其实每次执行的任务也就是run方法执行的代码
+  这会导致线程间通信很难,而且不好复用,如果是使用实现Runnable,就可以使用线程池,这样就可以达到Runnalbe复用的效果,大大提高了效率,而且创建多个线程,执行的任务是同一段代码
+
+
