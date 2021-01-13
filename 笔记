@@ -33,6 +33,14 @@ One is to
  第二:出现异常情况
 
 
+当在run()方法中调用了sleep()方法时, 如果这个线程被中断,在外面调用了thread.interrupt();那么因为调用了sleep方法,中断标记会被清空,  我们在sleep()方法的源码注释中找到答案
+if any thread has interrupted the current thread. The
+     *          <i>interrupted status</i> of the current thread is
+     *          cleared when this exception is thrown
+
+     就是上面注释写的很清楚了
+
+
 
 
 
