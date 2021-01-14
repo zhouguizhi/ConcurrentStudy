@@ -4,7 +4,7 @@ package threadcoreknowledge.stopthreads;
  * 在调用了线程的interrupt()方法后,还要在run()方法中去判断是否被中断isInterrupted()
  */
 public class RightStopThreadWithoutSleep implements Runnable{
-    public static void main(String[] args) {
+    public  static void main(String[] args) {
        Thread thread = new Thread(new RightStopThreadWithoutSleep());
         thread.start();
         try {
