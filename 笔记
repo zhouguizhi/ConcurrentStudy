@@ -170,7 +170,26 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
       因为wait(),notify(),notifyAll()这三个方法是锁级别的操作,而锁可以是任意对象的,而锁是绑定在某个对象中,而不是线程中,加入把wait(),notify(),notifyAll()
       放到Thread类中,这样就会造成很大的局限性,因为一个线程可以持有多把锁,但是如果把wait等三个方法放到Thread中的话,就不能一个线程持有多把锁的情况
 
-      
+
+      7:wait方法属于Object对象的,那么调用Thread.wait会怎么样呢?
+      答案:
+      因为Thread类比较特殊,因为线程在退出的时候会自动的去执行notify,
+
+
+
+      8:如何选择是使用notify还是notifyAll？
+      答案:
+      唤醒多个线程和一个线程的区别
+
+      9:notifyAll之后所有的线程都会再次抢夺锁，如果某线程抢夺失败怎么办？
+      答案:
+      没抢到锁的线程处于等待状态，等待锁的释放
+
+      10:用suspend和resume来阻塞线程可以吗？为什么
+      答案:
+      这两个方法被弃用了，推荐使用wait、notify
+
+
 
 
 
