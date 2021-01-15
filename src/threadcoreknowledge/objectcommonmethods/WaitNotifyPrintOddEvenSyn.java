@@ -9,7 +9,7 @@ public class WaitNotifyPrintOddEvenSyn {
     private static int count;
     private static int max_count = 100;
     private static final Object lock = new Object();
-    
+
     public static void main(String[] args) {
         new Thread(new Runnable() {
             @Override
