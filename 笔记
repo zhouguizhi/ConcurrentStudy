@@ -122,5 +122,65 @@ public enum State {
     用法,作用:粗塞阶段,唤醒阶段,遇到中断
 
 
+    5:面试题:为什么wait要放在同步代码块中,而sleep则不用
+    答:
+
+    6:为什么在一个非同步方法中调用wait报错,比如
+    public  void test(){
+            for(int i=0;i<30;i++){
+                System.out.println("i="+i);
+                try {
+                    wait(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+//报错日记
+Exception in thread "main" java.lang.IllegalMonitorStateException
+	at java.lang.Object.wait(Native Method)
+	at threadcoreknowledge.objectcommonmethods.WaitNotifyPrintOddEveWait.test(WaitNotifyPrintOddEveWait.java:19)
+	at threadcoreknowledge.objectcommonmethods.WaitNotifyPrintOddEveWait.main(WaitNotifyPrintOddEveWait.java:11)
+
+	解决的问题很简单,只要是同步方法或者同步代码块就行
+
+	那为什么会报错呢?
+	进入到wait()方法源码中,
+	public final native void wait(long timeout) throws InterruptedException;
+	方法它是一个native层,那就超过了我的能力范围了,但是它的注释给我们讲的很清楚
+
+    看他们的注释中有这个
+    The current thread must own this object's monitor
+    翻译就是:
+    当前线程必须拥有该对象的监视器
+    那么是wait方法必现有对象的监视器,所以必现放在同步中去执行wait方法,所以说解决上面的额问题很简单,
+
+
+    正确回答:
+    如果不把wait()方法放到同步代码块中的话,执行wait之前(还没有执行wait方法),线程突然切过去了,切过去的线程刚好执行了notify或者notifyAll()方法
+    如果把代码都执行完毕再执行notify,这个时候再切换线程,去执行wait,就会导致线程一直处于粗塞状态,没有线程去唤醒它,从而导致永久等待或者死锁的发生,
+    java设计者考虑到这种问题,所以就把wait方法放到同步中去调用,线程间需要配合或者传递数据的方式都放到同步代码块中去做了
+
+    sleep()方法是针对自己单独线程的,不会设计到线程间的通信,和其他线程关系不大
+
+
+
+    6:为什么线程通信的方法wait(),notify(),notifyAll()方法被定义在Object类中,而sleep()方法定义在Thread类中
+      答案:
+      因为wait(),notify(),notifyAll()这三个方法是锁级别的操作,而锁可以是任意对象的,而锁是绑定在某个对象中,而不是线程中,加入把wait(),notify(),notifyAll()
+      放到Thread类中,这样就会造成很大的局限性,因为一个线程可以持有多把锁,但是如果把wait等三个方法放到Thread中的话,就不能一个线程持有多把锁的情况
+
+      
+
+
+
+
+
+
+
+
+
+
+
 
 

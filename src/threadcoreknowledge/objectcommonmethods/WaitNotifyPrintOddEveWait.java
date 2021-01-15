@@ -8,8 +8,19 @@ public class WaitNotifyPrintOddEveWait {
     private static final Object lock = new Object();
 
     public static void main(String[] args) {
-        new Thread(new TurningRunner(), "偶数").start();
-        new Thread(new TurningRunner(), "奇数").start();
+       new WaitNotifyPrintOddEveWait().test();
+//        new Thread(new TurningRunner(), "偶数").start();
+//        new Thread(new TurningRunner(), "奇数").start();
+    }
+    public  void test(){
+        for(int i=0;i<30;i++){
+            System.out.println("i="+i);
+            try {
+                wait(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
     /**
      * 1. 拿到锁，我们就打印
