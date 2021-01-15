@@ -198,7 +198,19 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
       答案:sleep方法可以让线程进入wait状态,并发不占用cpu资源,但是不释放锁,直到规定时间后才执行,休眠时间如果被中断,会跑出异常并且清空中断标记
 
 
-      
+
+      13:wait和sleep方法的异同
+      相同点:
+      都会粗塞 响应中断
+      不同点:
+       wait只能放在同步中,而sleep就不需要强制要求
+       wait后释放锁,sleep不会释放锁
+       wait属于Object类,sleep属于Thread类
+       sleep必现要传递时间,而wait则不需要
+
+
+
+
 
 
 
