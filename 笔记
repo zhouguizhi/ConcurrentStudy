@@ -208,6 +208,12 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
        wait属于Object类,sleep属于Thread类
        sleep必现要传递时间,而wait则不需要
 
+       14:join
+       作用:因为新的线程加入了我们,所以我们要等待它执行完后再执行
+       用法:main线程等待thread1线程执行完毕,注意谁等谁
+
+
+
 
 
 
