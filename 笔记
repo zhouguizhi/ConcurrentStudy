@@ -191,7 +191,7 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
 
       11:Thread类和Object类重要方法讲解
       sleep():我只想让线程在指定的时间内运行,其他时间不要占用cpu资源,而且不释放锁,主要体现在二个方面
-      不释放synchronized和lock 锁
+      不释放synchronized和lock 锁,可以使用2个线程去证明, sleep方法不释放锁,
 
 
 
