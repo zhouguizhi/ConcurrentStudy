@@ -194,6 +194,16 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
       不释放synchronized和lock 锁,可以使用2个线程去证明, sleep方法不释放锁,
 
 
+      12:sleep方法响应中断
+      答案:sleep方法可以让线程进入wait状态,并发不占用cpu资源,但是不释放锁,直到规定时间后才执行,休眠时间如果被中断,会跑出异常并且清空中断标记
+
+
+      
+
+
+
+
+
 
 
 
