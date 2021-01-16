@@ -213,6 +213,27 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
        用法:main线程等待thread1线程执行完毕,注意谁等谁
 
 
+       15:线程安全
+
+       16:什么是JMM
+       JMM是Java Memory Model的缩写
+
+       17:为什么需要JMM
+       因为我们写的java代码最终是要变成机器指令,然后交给cpu去执行的,而cpu各大厂商也不同,导致不同的cpu(处理器)结果不同,无法保证并发安全
+       这个时候就需要一套标准,让多线程的运行结果可预期
+
+       JMM是一组规范,需要各个JVM的实现来遵守JM规范,以便开发者可以利用这些规范,更方便的开发多线程程序
+
+
+       18:JMM三大特性
+       a:原子性
+       b:可见性
+       c:重排序
+
+
+
+
+
 
 
 
