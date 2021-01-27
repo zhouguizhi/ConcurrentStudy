@@ -237,6 +237,11 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
 
 
 
+      20:yield方法
+      作用:释放我的cpu时间片 不会释放锁,不会阻塞,线程还是处于Runnable状态
+
+
+
 
 
 
