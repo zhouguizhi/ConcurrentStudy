@@ -29,7 +29,7 @@ public class Join {
 
         thread.start();
         thread2.start();
-        System.out.println("开始等待子线程运行完毕");
+        //因为thread thread2是在main线程中调用了join() 方法,所以是等thread thread2 执行完毕后再执行main线程
         thread.join();
         thread2.join();
         //在这main线程会等待 上面2个线程执行完后再打印下面的输出语句

@@ -232,6 +232,10 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
 
 
 
+      19:什么是重排序
+      在线程1内部二行的代码的实际执行顺序和代码在java文件中的顺序不一致,代码指令并不是严格按照代码语句顺序执行的,
+
+
 
 
 
