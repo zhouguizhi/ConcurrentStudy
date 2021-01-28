@@ -219,6 +219,7 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
        16:什么是JMM
        JMM是Java Memory Model的缩写
 
+
        17:为什么需要JMM
        因为我们写的java代码最终是要变成机器指令,然后交给cpu去执行的,而cpu各大厂商也不同,导致不同的cpu(处理器)结果不同,无法保证并发安全
        这个时候就需要一套标准,让多线程的运行结果可预期
@@ -261,6 +262,12 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
       JVM内存结构:和java 虚拟机运行时区域有关
       java内存模型(JMM):和java并发编程有关
       java对象模型:和java对象在虚拟机中的表现形式有关
+
+      25:为什么需要JMM
+        c语言不存在内存模型的概念
+        依赖处理器(cpu), 不同的处理器处理结果不同
+        无法保证并发安全
+        根据上面的介绍,就需要一个标准,让多线程运行的结果可预期
 
 
 
