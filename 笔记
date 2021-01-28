@@ -214,6 +214,7 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
 
 
        15:线程安全
+        多个线程访问某个对象以及对象方法或者属性的时候,结果和我预想的一样,这就是线程安全简单的定义
 
        16:什么是JMM
        JMM是Java Memory Model的缩写
