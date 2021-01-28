@@ -253,6 +253,18 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
 
 
 
+      22:死锁的产生条件
+      23:学习方法,自顶向下,先列出使用场景,然后再去使用,最后去看其内部实现原理
+
+
+      24
+      JVM内存结构:和java 虚拟机运行时区域有关
+      java内存模型(JMM):和java并发编程有关
+      java对象模型:和java对象在虚拟机中的表现形式有关
+
+
+
+
 
 
 
