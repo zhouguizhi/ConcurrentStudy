@@ -54,7 +54,7 @@ public class OutOfOrderExecution {
             thread1.join();
             thread2.join();
             String result = "第"+i+"次("+"x="+x+","+"y="+y+")";
-            
+
 //            if(x==1&&y==1){
 //                System.out.println(result);
 //                break;
