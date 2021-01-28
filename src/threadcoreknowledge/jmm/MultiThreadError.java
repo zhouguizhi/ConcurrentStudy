@@ -1,9 +1,13 @@
 package threadcoreknowledge.jmm;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * 描述:在多线程情况下演示a++出错问题
  */
 public class MultiThreadError implements Runnable{
-    private volatile int a = 0;
+    private AtomicInteger a = new AtomicInteger();
+//    private  AtomI a = 0;
     public static void main(String[] args) throws InterruptedException {
         MultiThreadError multiThreadError = new MultiThreadError();
         Thread thread1 =  new Thread(multiThreadError);
@@ -18,7 +22,7 @@ public class MultiThreadError implements Runnable{
     @Override
     public void run() {
         for(int i=0;i<10000;i++){
-            a++;
+           a.incrementAndGet();
         }
     }
 }
