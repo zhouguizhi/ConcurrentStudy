@@ -270,6 +270,26 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
         根据上面的介绍,就需要一个标准,让多线程运行的结果可预期
 
 
+      26:
+      interrupted() 判断是否中断,然后会把线程的中断状态设置为false
+      源码:
+      public static boolean interrupted() {
+              return currentThread().isInterrupted(true);
+          }
+          调用了isInterrupted()有参方法
+           private native boolean isInterrupted(boolean ClearInterrupted);
+           ClearInterrupted表示是否需要清除
+
+
+      interrupt():判断线程是否中断
+        Thread.interrupted()的目标对象是什么？
+
+
+
+        27:一般情况而言,把blocked(阻塞),waiting(等待),Timed_Waiting(计时等待)都称之为阻塞状态
+
+
+
 
 
 
