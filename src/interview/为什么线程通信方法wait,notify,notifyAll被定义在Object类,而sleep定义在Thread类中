@@ -1,1 +1,3 @@
 为什么线程通信方法wait,notify,notifyAll被定义在Object类,而sleep定义在Thread类中？
+答:主要是因为wait,notify,notifyAll三个方法是锁级别的操作,而锁是属于某个对象的,假设wait,notify,notifyAll这三个方法都是在Thread中,那么就会
+造成很大的局限性,只有Thread类能成为锁了.如果某个线程持有多个锁,而且锁之间是互相配合的,也就是说这个锁需要其他线程打开,
