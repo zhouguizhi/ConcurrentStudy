@@ -290,6 +290,11 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
 
 
 
+        28:wait,notify,notifyAll详解
+        作用,用法:阻塞阶段,唤醒阶段,遇到中断
+
+
+
 
 
 

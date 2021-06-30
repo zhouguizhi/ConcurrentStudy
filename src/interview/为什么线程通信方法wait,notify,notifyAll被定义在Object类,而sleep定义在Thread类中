@@ -1,0 +1,1 @@
+为什么线程通信方法wait,notify,notifyAll被定义在Object类,而sleep定义在Thread类中？
