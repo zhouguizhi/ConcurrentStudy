@@ -9,7 +9,7 @@ public class WaitNotifyPrintOddEveWait {
 
     public static void main(String[] args) {
         new Thread(new TurningRunner(), "偶数").start();
-        new Thread(new TurningRunner(), "奇数").resume();
+        new Thread(new TurningRunner(), "奇数").start();
     }
     /**
      * 1. 拿到锁，我们就打印
