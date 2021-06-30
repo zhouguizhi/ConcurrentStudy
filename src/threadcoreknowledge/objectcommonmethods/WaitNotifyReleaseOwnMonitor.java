@@ -1,9 +1,10 @@
 package threadcoreknowledge.objectcommonmethods;
 /**
- * 描述：     证明wait只释放当前的那把锁
+ * 描述:证明wait只释放当前的那把锁
  * 在多线程中使用2个锁 然后使用wait,notify进行验证
  */
 public class WaitNotifyReleaseOwnMonitor {
+    //这里为什么要使用volatile修饰呢？
     private static volatile Object LockA = new Object();
     private static volatile Object LockB = new Object();
 

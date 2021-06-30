@@ -1,6 +1,7 @@
 package threadcoreknowledge.objectcommonmethods;
 /**
  * 描述:3个线程，线程1和线程2首先被阻塞，线程3唤醒它们。notify, notifyAll。 start先执行不代表线程先启动。
+ * 这里主要演示使用notifyAll去唤醒所有在等待的线程
  */
 public class WaitNotifyAll implements Runnable{
     //锁
@@ -38,6 +39,7 @@ public class WaitNotifyAll implements Runnable{
             super.run();
             synchronized (lock){
                 lock.notifyAll();
+                System.out.println("开始唤醒所有在等待的线程");
             }
         }
     }
