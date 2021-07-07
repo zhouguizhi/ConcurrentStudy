@@ -298,7 +298,7 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
         sleep方法可以让线程进入到waiting状态,并且不占用CPU资源,但是不释放锁,直到规定时间后再执行,休眠期间如果被打断的话,会抛出异常并清除中断状态或者叫标记
 
 
-       
+
 
 
 
