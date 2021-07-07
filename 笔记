@@ -297,6 +297,8 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
         作用:我只想让线程在预期的时间内执行,其他时候不要占用CPU资源,sleep()后进入粗塞状态,直到他休眠时间到了以后,重新获取CPU资源,让cpu进行调度
         sleep方法可以让线程进入到waiting状态,并且不占用CPU资源,但是不释放锁,直到规定时间后再执行,休眠期间如果被打断的话,会抛出异常并清除中断状态或者叫标记
 
+        30:
+
 
 
 

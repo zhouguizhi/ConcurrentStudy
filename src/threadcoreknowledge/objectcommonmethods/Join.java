@@ -26,7 +26,6 @@ public class Join {
                 System.out.println(Thread.currentThread().getName() + "执行完毕");
             }
         });
-
         thread.start();
         thread2.start();
         //因为thread thread2是在main线程中调用了join() 方法,所以是等thread thread2 执行完毕后再执行main线程
@@ -46,5 +45,6 @@ public class Join {
             }
         });
         thread3.start();
+        System.out.println("main方法执行完毕>>>>>>>>>>>>>");
     }
 }

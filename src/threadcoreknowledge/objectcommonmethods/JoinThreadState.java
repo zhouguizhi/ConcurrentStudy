@@ -6,14 +6,14 @@ public class JoinThreadState {
     private static Thread mainThread;
     public static void main(String[] args) {
         mainThread = Thread.currentThread();
-        MyThread myThrad = new MyThread();
-        myThrad.start();
+        MyThread myThread = new MyThread();
+        myThread.start();
         try {
-            myThrad.join();
+            myThread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("住线程执行完毕");
+        System.out.println("主线程执行完毕");
     }
     static class MyThread extends Thread{
         @Override
