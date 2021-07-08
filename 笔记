@@ -330,6 +330,18 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
 
 
 
+         32:什么情况下会出现线程安全问题  怎么避免？
+         第一种情况:a++多线程情况下出现结果不一致
+         第二种情况:死锁  活锁 饥饿
+         第三种情况:对象发布和初始化的时候安全问题
+
+
+         33:
+
+
+
+
+
 
 
 
