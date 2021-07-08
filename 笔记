@@ -336,7 +336,13 @@ Exception in thread "main" java.lang.IllegalMonitorStateException
          第三种情况:对象发布和初始化的时候安全问题
 
 
-         33:
+         33:有哪些典型的对象“逸出”的情况？
+            方法返回一个private对象（private的本意是不让外部访问）
+
+            还未完成初始化（构造函数没完全执行完毕）就把对象提供给外界，比如：
+            2.1 在构造函数中未初始化完毕就this赋值
+            2.2 隐式逸出——注册监听事件
+            2.3 构造函数中运行线程
 
 
 
