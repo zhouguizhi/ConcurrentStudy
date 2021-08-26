@@ -31,5 +31,6 @@ public class MultiThreadError5 {
         System.out.println(multiThreadError5.getMapImproved().get("1"));
         multiThreadError5.getMapImproved().remove("1");
         System.out.println(multiThreadError5.getMapImproved().get("1"));
+
     }
 }
