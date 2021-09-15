@@ -1,0 +1,105 @@
+Index: src/threadcoreknowledge/jmm/MultiThreadDeak.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/threadcoreknowledge/jmm/MultiThreadDeak.java	(date 1631633581000)
++++ src/threadcoreknowledge/jmm/MultiThreadDeak.java	(date 1631633581000)
+@@ -0,0 +1,47 @@
++package threadcoreknowledge.jmm;
++/**
++ * 演示死锁问题
++ */
++public class MultiThreadDeak implements Runnable{
++    int flag = 1;
++    static Object object1 = new Object();
++    static Object object2 = new Object();
++    @Override
++    public void run() {
++        System.out.println("flag:="+flag);
++        if(flag==1){
++            synchronized (object1){
++                try {
++                    Thread.sleep(500);
++                } catch (InterruptedException e) {
++                    e.printStackTrace();
++                }
++                synchronized (object2){
++                    System.out.println("11");
++                }
++            }
++        }
++
++        if(flag==0){
++            synchronized (object2){
++                try {
++                    Thread.sleep(500);
++                } catch (InterruptedException e) {
++                    e.printStackTrace();
++                }
++                synchronized (object1){
++                    System.out.println("000");
++                }
++            }
++        }
++    }
++
++    public static void main(String[] args) {
++        MultiThreadDeak rl = new MultiThreadDeak();
++        MultiThreadDeak r2 = new MultiThreadDeak();
++        rl.flag = 1;
++        r2.flag = 0;
++        new Thread(rl).start();
++        new Thread(r2).start();
++    }
++}
+Index: src/threadcoreknowledge/jmm/MultiThreadError.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/threadcoreknowledge/jmm/MultiThreadError.java	(date 1629988752000)
++++ src/threadcoreknowledge/jmm/MultiThreadError.java	(date 1631631646000)
+@@ -1,12 +1,14 @@
+ package threadcoreknowledge.jmm;
+-
+ import java.util.concurrent.atomic.AtomicInteger;
+-
+ /**
+  * 描述:在多线程情况下演示a++出错问题
++ * 演示计数不正确(减少),找出具体出错的位置
+  */
+ public class MultiThreadError implements Runnable{
+-    private AtomicInteger a = new AtomicInteger();
++    Object object = new Object();
++//    private AtomicInteger a = new AtomicInteger();
++    private int a;
++     int index = 0;
+ //    private  AtomI a = 0;
+     public static void main(String[] args) throws InterruptedException {
+         MultiThreadError multiThreadError = new MultiThreadError();
+@@ -18,11 +20,22 @@
+         thread2.join();
+ 
+         System.out.println("a:="+multiThreadError.a);
++//        System.out.println("index:="+multiThreadError.index);
+     }
+     @Override
+     public void run() {
+-        for(int i=0;i<10000;i++){
+-           a.incrementAndGet();
++        //预期是20000,因为是2个线程每次都++,所以理想情况下a应该是10000*2(2个线程),但是实际情况是不到20000,这就出现了数据不安全的情况了
++        //因为a++,其实在执行的时候是分为三步的 ,第一步 a=1,第二步a+1,第三步a=2,而且2个线程并不知道对方的值,那么问题就出现了
++        //比如线程一执行到了a++,这个时候假如a=1,然后a+1,的结果是2, 这个时候cpu切换到线程二去了,还是会执行a+1,因为线程二并不知道线程一加了,所以结果是2,这个时候再执行线程1的第三步, 线程二的第三步,这就是为啥结果小于20000的原因了
++        synchronized (object){
++
++            for(int i=0;i<10000;i++){
++                a++;
++            }
+         }
++
++//        while (index<10000){
++//            index++;
++//        }
+     }
+ }
